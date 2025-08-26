@@ -38,4 +38,4 @@ ts_data <- q1_clean |> #trying to roll mean for individual variables
                          align = c("center")))
 
 ggplot(ts_data, aes(x = Sample_Date, y = `k_ts`))+
-  geom_line()
+  geom_line(color = "red")
