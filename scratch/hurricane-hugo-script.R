@@ -34,8 +34,8 @@ q1_clean <- q1 |>
   clean_names() 
 
 ts_data <- q1_clean |> #trying to roll mean for individual variables
-  mutate(k_ts = rollmean(K, k = 2.5, fill = NA, 
+  mutate(k_ts = rollmean(K, k = 12, fill = NA, 
                          align = c("center")))
 
 ggplot(ts_data, aes(x = Sample_Date, y = `k_ts`))+
-  geom_line()
+  geom_line(color = "purple")
