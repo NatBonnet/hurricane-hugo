@@ -25,7 +25,7 @@ q3 <- read_csv(here::here("data", "QuebradaCuenca3-Bisley.csv"))
 # }
 
 
-q1_trial <- q1 |>
+q1c_trial <- q1 |>
   select(Sample_Date, K) |>
   filter(Sample_Date <= "1994-12-27", Sample_Date >= "1988-01-05") |>
   mutate(K_mean = sapply(X = Sample_Date, 
