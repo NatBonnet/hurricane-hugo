@@ -27,8 +27,8 @@ q3 <- read_csv(here::here("data", "QuebradaCuenca3-Bisley.csv"))
 
 q1_clean <- q1 |>
   select(Sample_ID, Sample_Date, `K`, `NO3-N`, `Mg`, `Ca`, `NH4-N`) |>
-  filter(Sample_Date <= "1994-12-27", Sample_Date >= "1988-01-05")|> 
-  mutate(week = lubridate::week(Sample_Date)) #creating new column to say which week of analysis you're looking at
+  filter(Sample_Date <= "1994-12-27", Sample_Date >= "1988-01-05")
+#creating new column to say which week of analysis you're looking at
 
 
 ts_data <- q1_clean |> #trying to roll mean for individual variables
@@ -56,7 +56,7 @@ res[is.nan(res)] <- NA
 
 td_days <- q1_clean |>
   mutate(day_of_month = lubridate::day(Sample_Date))|>
-  mutate(window = lubridate::interval(start = )
+  mutate(window = lubridate::interval(start = ))
     #make a new column with the day of month 
 
 
