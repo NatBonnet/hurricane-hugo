@@ -2,14 +2,12 @@
 ##  ~ Hurricane Hugo Nutrients in the Bisley Catchement  ----
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 library(dplyr)
 library(tidyverse)
 library(janitor)
 library(lubridate)
 library(here)
 library(patchwork)
-library(zoo)
 
 
 #read in data
@@ -22,8 +20,29 @@ q2 <- read_csv(here::here("data", "QuebradaCuenca2-Bisley.csv"))
 q3 <- read_csv(here::here("data", "QuebradaCuenca3-Bisley.csv"))
 
 
-# moving average dynamically figures out how many input data points are in each- variability instead of moving over the input you move over the output, centered moving average so you get the same number of data points on each side of the 9 weeks
-# iterating across outputs- for loops, functions, encapsulation, sapply(): if you can write a solution once, sapply will do it an unlimited number of times 
+
+# for(i in length(files)){
+#   
+# }
+
+
+q1_clean <- q1 |>
+  select(Sample_ID, Sample_Date, `K`, `NO3-N`, `Mg`, `Ca`, `NH4-N`) |>
+  filter(Sample_Date <= "1994-12-27", Sample_Date >= "1988-01-05") |>
+  mutate(K_mean = sapply(Sample_Date, roll_avg, focal_date = as.Date("1998-01-05"), 
+                              date_range = q1_clean$Sample_Date, 
+                              chem = q1_clean$K, 
+                              window_size_wks = 10))
+
+
+
+tinyproblem$calc_roll <- sapply(
+  tinyproblem$sample_date, 
+  roll_avg, 
+  dates = tiny_problem$sample_date
+  conc= tinyproblem$ca, 
+  win_size_weeks = 9
+)
 
 q1_clean <- q1 |>
   select(Sample_ID, Sample_Date, `K`, `NO3-N`, `Mg`, `Ca`, `NH4-N`) |>
