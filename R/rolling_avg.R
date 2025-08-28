@@ -8,7 +8,7 @@ roll_avg <- function(focal_date, date_range, chem, window_size_wks){
   window_conc <- chem[is_in_window]
   
   #calculate the mean of the concentrations within the window
-  mean_conc <- mean(window_conc)
+  mean_conc <- mean(window_conc, na.rm = TRUE)
   
   return(mean_conc)
 }
