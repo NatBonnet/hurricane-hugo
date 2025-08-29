@@ -99,7 +99,7 @@ patchwork_plot <- patchwork::wrap_plots(k_plot, no3_plot, ca_plot, mg_plot, nh4_
 # adding title, caption, and tags on each panel
 patchwork_plot_final <- patchwork_plot + plot_annotation(tag_levels = "A", #this will add a through e on the panels for reference in caption
                                  title = "Hurricane Effects on Stream Chemistry in Bisley Catchement Streams", # adding overhead title to plot
-                                 caption = "Fig. 1. Chemical concentrations in Bisley, Puerto Rico streams before and after Hurricane Hugo (1988-1994), using 10-wk moving averages.\nConcentrations for (a) potassium, (b) nitrate, (c) calcium, (d) magnesium, and (e) ammonium. The vertical lines mark the time of hurricane disturbance.") & theme(plot.tag = element_text(size = 8)) #adding caption to describe the plot and applying the plot tags in the same size and style
+) & theme(plot.tag = element_text(size = 8)) #adding caption to describe the plot and applying the plot tags in the same size and style
 
 ggsave("figs/patchwork_plot.png",
        plot = patchwork_plot_final,

@@ -1,14 +1,62 @@
 ---
-title: "Paper: analysis"
+title: "Effects of Hurricane Hugo on the Chemical Concentrations in Puerto Rico Bisley Catchent Streams"
 format: html
+author: Nathalie Bonnet
 ---
 
 ## Background
 
+The purpose of this project was to reproduce a time series analysis and visualization from Schaefer, Douglas. A., William H. McDowell, Fredrick N. Scatena, and Clyde E. Asbury. 2000. “Effects of Hurricane Disturbance on Stream Water Concentrations and Fluxes in Eight Tropical Forest Watersheds of the Luquillo Experimental Forest, Puerto Rico.” Journal of Tropical Ecology 16 (2): 189–207. https://doi.org/10.1017/s0266467400001358. Below is Figure 3 from Schaefer et al. 2000 representing nutrient changes in Bisley streams.
+
+![](images/schaeffer_plot_original.png){width="286"}
+
+The goal was to find a 10-week moving average of nutrient concentrations within Bisley catchment streams in Puerto Rico. The nutrients of interest were potassium (K), nitrate (NO3), calcium (Ca), magnesium (Mg), and ammonium (NH4). The data were assessed from the beginning of 1988 to the end of 1994, within which Hurricane Hugo occurred.
+
 ## Data
+
+The Bisley data contains three files accessed from McDowell, William H., and USDA Forest Service. International Institute Of Tropical Forestry (IITF). 2024. “Chemistry of Stream Water from the Luquillo Mountains.” Environmental Data Initiative.
+
+<https://doi.org/10.6073/PASTA/F31349BEBDC304F758718F4798D25458>.:\
+- prm: "RioMameyesPuenteRoto.csv" - q1: "QuebradaCuenca1_Bisley.csv" - q2: "QuebradaCuenca2_Bisley.csv" - q3: "QuebradaCuenca2_Bisley.csv"
 
 ## Methods
 
+In order to analyze the mean stream nutrient concentration across a time series, a moving average function was applied across a 10-week window. The purpose of creating a central moving average was to buffer out noise from variability in stream data. The resulting function calculates the average chemical concentration within the set window and applies that through an entire vector of dates. Below is the function that was created to apply this function to nutrient columns by name
+
+```{r}
+#| code-fold: true
+#| echo : true
+# ----Rolling Average Function----
+source(here::here("R", "rolling_avg.R"))
+# roll_avg <- function(focal_date, sample_date, nutrient_conc, win_size_wks){
+#   
+#   #subset the dates within the specific window- returns TRUE/FALSE
+#   is_in_win <- (sample_date > focal_date - (win_size_wks/2) *7) & #putting weeks into days
+#     (sample_date < focal_date + (win_size_wks/2) *7)
+#   
+#   # figure out associated concentrations- indexing with trues and falses, what falls within window gets looped through
+#   win_conc <- nutrient_conc[is_in_win]
+#   
+#   #calculate the mean of the concentrations within the window
+#   result <- mean(win_conc, na.rm = TRUE)
+#   
+#   return(result)
+# }
+
+#example of roll_avg use
+# #bisley_example_dataset <- roll_avg(focal_date = sample_date,
+#                                    sample_date = sample_date, 
+#                                    nutrient_conc = "k", 
+#                                    win_size_wks = "10")
+
+```
+
+The {dplyr} function sapply() was used to apply this across columns in a dataset, and a separate function was create to iteratively apply this to each Bisley dataset.
+
+The resulting nutrient concentration means were plotted across 1988-1994 with comparative lines between site.
+
 ## Results
 
-![](~/MEDS/EDS-214/day1/hurricane-hugo/figs/patchwork_plot.png)
+The plot generated demarcates the event of Hurricane Hugo with a vertical line. An initial increase in nutrient concentrations in streams across all sites. This is explained in Schaefer et al. 2000 as a result of plant nutrient uptake decreasing post-disturbance. This was the expected result as compared to Figure 3 from the Schaefer paper. It is worth noting that the data were changed post publication, which is reflected in this analysis.
+
+!["Figure 1. Chemical concentrations in Bisley, Puerto Rico streams before and after Hurricane Hugo (1988-1994), using 10-wk moving averages.\nConcentrations for (a) potassium, (b) nitrate, (c) calcium, (d) magnesium, and (e) ammonium. The vertical lines mark the time of hurricane disturbance."](images/patchwork_plot.png)

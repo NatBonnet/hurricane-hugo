@@ -10,12 +10,3 @@ install.packages("lubridate")
 install.packages("here")
 install.packages("patchwork")
 install.packages("paletteer")
-
-# libraries
-library(dplyr)
-library(tidyverse)
-library(janitor)
-library(lubridate)
-library(here)
-library(patchwork)
-library(paletteer)
