@@ -1,6 +1,8 @@
 ---
-title: "Effects of Hurricane Hugo on the Chemical Concentrations in Puerto Rico Bisley Catchent Streams"
-format: html
+title: "EDS214: Effects of Hurricane Hugo on the Chemical Concentrations in Puerto Rico Bisley Catchment Streams"
+format: 
+  html:
+   output-file: "index.html"
 author: Nathalie Bonnet
 ---
 
