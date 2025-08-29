@@ -1,14 +1,8 @@
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-##  ~ Hurricane Hugo Nutrients in the Bisley Catchement  ----
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##  ~ Small example of subsetting data and applying function, then plotting  ----
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-library(dplyr)
-library(tidyverse)
-library(janitor)
-library(lubridate)
-library(here)
-library(patchwork)
-source("R/rolling_mean.R")
+
 
 #read in data
 prm <- read_csv(here::here("data", "RioMameyesPuenteRoto.csv"))
@@ -19,11 +13,8 @@ q2 <- read_csv(here::here("data", "QuebradaCuenca2-Bisley.csv"))
 
 q3 <- read_csv(here::here("data", "QuebradaCuenca3-Bisley.csv"))
 
-
-# for(i in length(files)){
-#   
-# }
-
+# subsetting dataframe by dates referenced in Schaeffer et al
+# applying rolling_avg function across all columns by 9 week period
 
 q1c_trial <- q1 |>
   select(Sample_Date, K) |>
@@ -34,6 +25,6 @@ q1c_trial <- q1 |>
                          nutrient_conc = K, 
                          win_size_wks = 9))
 
-
+# making a simple plot of the result
 ggplot(ts_data, aes(x = Sample_Date, y = `k_ts`))+
   geom_line()
