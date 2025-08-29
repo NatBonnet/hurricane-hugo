@@ -11,7 +11,7 @@ root:
 - data_import_cleaning.R : contains the csv import and application of the initial rolling average function
 
 - analysis_plot.R : contains the final subsetting of cleaned data and ggplot/patchwork code to render fig
-
+folders: 
 - [data](https://github.com/NatBonnet/hurricane-hugo/tree/main/data): contains the raw data accessed from EDI Docs: contains the processed data with the analysis script
 
 - [docs](https://github.com/NatBonnet/hurricane-hugo/tree/main/docs): contains the output html of paper.qmd
@@ -20,6 +20,7 @@ root:
 
 - [R](https://github.com/NatBonnet/hurricane-hugo/tree/main/R): supporting code (functions created to calculate the rolling average and the function to apply roll_avg() across columns)
 - [paper](https://github.com/NatBonnet/hurricane-hugo/tree/main/paper): contains the finalized qmd
+- [outputs](https://github.com/NatBonnet/hurricane-hugo/tree/main/outputs): contains the final cleaned data frames as rds files
 
 - [scratch](https://github.com/NatBonnet/hurricane-hugo/tree/main/scratch): contains a test code script from the first application of the roll_avg function
 
