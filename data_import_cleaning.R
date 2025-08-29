@@ -40,3 +40,11 @@ q1_roll_avg  <- apply_roll_avg(q1)
 q2_roll_avg  <- apply_roll_avg(q2)
 q3_roll_avg  <- apply_roll_avg(q3)
 prm_roll_avg <- apply_roll_avg(prm)
+
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##  ~ saving the outputs as RDS  ----
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+saveRDS(q1_roll_avg, file = here::here("outputs", "q1_roll_avg.rds"))
+saveRDS(q2_roll_avg, file = here::here("outputs", "q2_roll_avg.rds"))
+saveRDS(q3_roll_avg, file = here::here("outputs", "q3_roll_avg.rds"))
+saveRDS(prm_roll_avg, file = here::here("outputs", "prm_roll_avg.rds"))

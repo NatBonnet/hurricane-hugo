@@ -17,7 +17,13 @@ The goal was to find a 10-week moving average of nutrient concentrations within 
 The Bisley data contains three files accessed from McDowell, William H., and USDA Forest Service. International Institute Of Tropical Forestry (IITF). 2024. “Chemistry of Stream Water from the Luquillo Mountains.” Environmental Data Initiative.
 
 <https://doi.org/10.6073/PASTA/F31349BEBDC304F758718F4798D25458>.:\
-- prm: "RioMameyesPuenteRoto.csv" - q1: "QuebradaCuenca1_Bisley.csv" - q2: "QuebradaCuenca2_Bisley.csv" - q3: "QuebradaCuenca2_Bisley.csv"
+- prm: "RioMameyesPuenteRoto.csv"
+
+\- q1: "QuebradaCuenca1_Bisley.csv"
+
+\- q2: "QuebradaCuenca2_Bisley.csv"
+
+\- q3: "QuebradaCuenca2_Bisley.csv"
 
 ## Methods
 
@@ -26,6 +32,7 @@ In order to analyze the mean stream nutrient concentration across a time series,
 ```{r}
 #| code-fold: true
 #| echo : true
+
 # ----Rolling Average Function----
 source(here::here("R", "rolling_avg.R"))
 # roll_avg <- function(focal_date, sample_date, nutrient_conc, win_size_wks){
@@ -59,4 +66,4 @@ The resulting nutrient concentration means were plotted across 1988-1994 with co
 
 The plot generated demarcates the event of Hurricane Hugo with a vertical line. An initial increase in nutrient concentrations in streams across all sites. This is explained in Schaefer et al. 2000 as a result of plant nutrient uptake decreasing post-disturbance. This was the expected result as compared to Figure 3 from the Schaefer paper. It is worth noting that the data were changed post publication, which is reflected in this analysis.
 
-!["Figure 1. Chemical concentrations in Bisley, Puerto Rico streams before and after Hurricane Hugo (1988-1994), using 10-wk moving averages.\nConcentrations for (a) potassium, (b) nitrate, (c) calcium, (d) magnesium, and (e) ammonium. The vertical lines mark the time of hurricane disturbance."](images/patchwork_plot.png)
+![Figure 1. Chemical concentrations in Bisley, Puerto Rico streams before and after Hurricane Hugo (1988-1994), using 10-wk moving averages.\nConcentrations for (a) potassium, (b) nitrate, (c) calcium, (d) magnesium, and (e) ammonium. The vertical lines mark the time of hurricane disturbance.](images/patchwork_plot-01.png)

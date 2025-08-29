@@ -6,17 +6,24 @@ This repository contains raw and processed data accessed from the Environmental 
 
 ## Documents
 root: 
-init_setup: contains the necessary packages to install
-data_import_cleaning: contains the csv import and application of the initial rolling average function
+- init_setup.R : contains the necessary packages to install
 
-[data](https://github.com/NatBonnet/hurricane-hugo/tree/main/data): contains the raw data accessed from EDI Docs: contains the processed data with the analysis script
-[docs](https://github.com/NatBonnet/hurricane-hugo/tree/main/docs): contains the output html of paper.qmd
-[figs](https://github.com/NatBonnet/hurricane-hugo/tree/main/figs): contains the outputted figure replicate of Schaefer et al. Fig 3, the flowchart that links back to README.md, and the original plot from Schafer et al. 
-[R](https://github.com/NatBonnet/hurricane-hugo/tree/main/R): supporting code (functions created to calculate the rolling average and the function to apply roll_avg() across columns)
-[paper](https://github.com/NatBonnet/hurricane-hugo/tree/main/paper): contains the finalized qmd
-[scratch](https://github.com/NatBonnet/hurricane-hugo/tree/main/scratch): contains a test code script from the first application of the roll_avg function
+- data_import_cleaning.R : contains the csv import and application of the initial rolling average function
+
+- analysis_plot.R : contains the final subsetting of cleaned data and ggplot/patchwork code to render fig
+
+- [data](https://github.com/NatBonnet/hurricane-hugo/tree/main/data): contains the raw data accessed from EDI Docs: contains the processed data with the analysis script
+
+- [docs](https://github.com/NatBonnet/hurricane-hugo/tree/main/docs): contains the output html of paper.qmd
+
+- [figs](https://github.com/NatBonnet/hurricane-hugo/tree/main/figs): contains the outputted figure replicate of Schaefer et al. Fig 3, the flowchart that links back to README.md, and the original plot from Schafer et al. 
+
+- [R](https://github.com/NatBonnet/hurricane-hugo/tree/main/R): supporting code (functions created to calculate the rolling average and the function to apply roll_avg() across columns)
+- [paper](https://github.com/NatBonnet/hurricane-hugo/tree/main/paper): contains the finalized qmd
+
+- [scratch](https://github.com/NatBonnet/hurricane-hugo/tree/main/scratch): contains a test code script from the first application of the roll_avg function
+
 ### Author
-
 Nathalie Bonnet
 
 ### Dataset Access
